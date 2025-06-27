@@ -1,0 +1,208 @@
+<!--
+  Fichier principal de l'application BG3 16 BITES
+  Page d'accueil permettant la sélection et la visualisation d'un personnage façon Baldur's Gate 3 en pixel art.
+  Structure : fond animé, interface utilisateur, navigation, stats, actions, info-bulles.
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/curseur.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+    <link rel="stylesheet" href="css/responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+
+    <title>BG3 16 BITES</title>
+</head>
+<body>
+  <div class="background">
+    <div class="sky"></div>
+    <div class="decor"></div>
+  </div>
+  
+  <!-- Interface principale de l'utilisateur -->
+  <div class="ui">
+    <!-- Barre de navigation pour les étapes de création de personnage -->
+    <header class="header">
+            <div class="uibox uibox-base">
+                <ul class="navbar">
+                    <!-- Liens de navigation entre les différentes étapes -->
+                    <li><a href="index.html">Origine</a></li>
+                    <li><a href="#">Race</a></li>
+                    <li><a href="#">Sous-race</a></li>
+                    <li><a href="#">Classe</a></li>
+                    <li><a href="#">Historique</a></li>
+                    <li><a href="#">Caractéristiques</a></li>
+                    <li><a href="#">Compétences</a></li>
+                </ul>
+            </div>
+    </header>
+    <!-- Conteneur principal en 3 colonnes : sélection, contenu dynamique, fiche personnage -->
+    <div class="container">
+        <div class="col1">
+            <div class="uibox2 uibox-base">choix du personnage</div>
+            <div class="uibox2 uibox-base">
+                <div class="choixpersonnages">
+                <!-- Portraits des personnages avec effet hover -->
+                <div class="picto-personnages">
+                    <img class="picto" src="images/portraits/picto-astarion.png" alt="Astarion" title="Astarion">
+                    <img class="picto-hover" src="images/portraits/picto-astarion-hover.png" alt="Astarion" title="Astarion">
+                </div>
+                 <div class="picto-personnages">
+                    <img class="picto" src="images/portraits/picto-ombrecoeur.png" alt="ombrecoeur">
+                    <img class="picto-hover" src="images/portraits/picto-ombrecoeur-hover.png" alt="ombrecoeur">
+                </div>
+                <div class="picto-personnages">
+                 <img class="picto" src="images/portraits/picto-gayle.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-gayle-hover.png" alt="">
+                </div>
+                <div class="picto-personnages">
+                     <img class="picto" src="images/portraits/picto-karlach.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-karlach-hover.png" alt="">
+                </div>
+                 <div class="picto-personnages">
+                    <img class="picto" src="images/portraits/picto-leazel.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-leazel-hover.png" alt="">
+                </div>
+                <div class="picto-personnages">
+                    <img class="picto" src="images/portraits/picto-wyll.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-wyll-hover.png" alt="">
+                </div>
+                 <div class="picto-personnages">
+                        <img class="picto" src="images/portraits/picto-sombrepulsion.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-sombrepulsion-hover.png" alt="">
+                </div>
+                <div class="picto-personnages">
+                        <img class="picto" src="images/portraits/picto-personnalisation.png" alt="">
+                    <img class="picto-hover" src="images/portraits/picto-personnalisation-hover.png" alt="">
+                </div>
+                 <!-- Navigation entre personnages -->
+                 <div class="uibox3 uibox-base">
+                        <span ><a href="#"><img src="images/nav/arrow-left.png" alt=""></a></span>
+                        <p>astarion</p>
+                        <span class=><a href="#"><img src="images/nav/arrow-right.png" alt=""></a></span>
+                 </div>
+                </div>
+            </div>
+            <!-- Lien vers l'introduction -->
+            <div class="uibox4 uibox-base">
+                <a href="#" class="intro"><img src="images/nav/arrow-left-full.png" alt="" class="arrowfull"> Voir l'introduction</a>
+                <a href="#" class="intro-mb">introduction</a>
+            </div>
+        </div>
+        <div class="col2">
+            <!-- Colonne centrale (contenu dynamique ou à venir) -->
+        </div>
+        <div class="col3">
+            <div class="uibox4 uibox-base">
+                <!-- Statistiques du personnage sélectionné avec info-bulles -->
+                <div class="stats">
+                  <div class="stat-row">
+                    <span class="tooltip">
+                      Haut-elfes
+                    <span class="tooltiptext">Les Haut-Elfes sont gracieux, intelligents et maîtrisent la magie. Ils bénéficient d'un bonus en Intelligence et connaissent un sort mineur supplémentaire.</span>
+                    </span>                
+                  </div>
+                  <div class="stat-row">
+                      <span class="tooltip">
+                        Roublard lv.1
+                      <span class="tooltiptext">Maîtres de la discrétion, des pièges et des attaques sournoises, les roublards excellent dans l'agilité et les actions tactiques. Parfait pour les joueurs rusés.</span>
+                      </span>                
+                  </div>
+                </div>
+
+                <div class="stats">
+                  <!-- Caractéristiques principales avec info-bulles -->
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      force
+                      <span class="tooltiptext">Mesure la puissance physique brute (corps à corps, port de charge)</span>
+                    </span>
+                    <span>8</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      dextérité
+                      <span class="tooltiptext">Agilité, réflexes et précision (attaque à distance, esquive)</span>
+                    </span>
+                    <span>17</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      constitution
+                      <span class="tooltiptext">Endurance et résistance physique (points de vie, vigueur)</span>
+                    </span>
+                    <span>14</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      intelligence
+                      <span class="tooltiptext">Raisonnement et mémoire (magie, connaissances, résolution d'énigmes)</span>
+                    </span>
+                    <span>13</span>
+                  </div>
+ 
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      sagesse
+                      <span class="tooltiptext">Perception, bon sens et intuition (soins, détection, volonté)</span>
+                    </span>
+                    <span>13</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stats-nom tooltip">
+                      charisme
+                      <span class="tooltiptext">Force de personnalité, éloquence et aura (persuasion, intimidation, sorts de barde/sorcier)</span>
+                    </span>
+                    <span>10</span>
+                  </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-row"><span class="stats-nom tooltip">
+                      initiative
+                     <span class="tooltiptext">Détermine l'ordre d'action en combat. Ajouté au jet de dé (1d20).</span>
+                    </span><span>+3</span></div>
+                    <div class="stat-row"><span class="stats-nom tooltip">
+                      points de vie
+                    <span class="tooltiptext">Les points de vie indiquent la santé du personnage. À 0, il tombe inconscient.</span>
+                    </span><span>10</span></div>
+                </div>
+            </div>  
+            <div class="uibox4 uibox-base">
+                <div><p>actions</p></div>
+                <!-- Compétences/actions du personnage avec info-bulle -->
+                <div class="skills">
+                  <span class="skills tooltip">
+                  <span ><img src="images/skills/attaque-sournoise.png" alt=""></span>
+                  <span ><img src="images/skills/attaque-sournoise2.png" alt=""></span>
+                  <span class="stats-nom skills">attaque <br> sournoise</span>
+                  <span class="tooltiptext-bottom"> Une fois par tour : +1d6 dégâts si avantage au jet d'attaque, ou si un allié est à 1,50 m de la cible. <br><br> Les dégâts augmentent avec le niveau.</span>
+                  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pied de page avec pictos joueurs et bouton de démarrage -->
+    <footer class="footer">
+      <div class="player">
+        <img class="picto" src="images/portraits/picto-player.png" alt="player1" title="player1">
+        <img class="picto" src="images/portraits/picto-noplayer.png" alt="player1" title="noplayer">
+        <img class="picto" src="images/portraits/picto-noplayer.png" alt="player1" title="noplayer">
+        <img class="picto" src="images/portraits/picto-noplayer.png" alt="player1" title="noplayer">
+      </div>
+      <div class="uibox-start-game uibox-base">
+        débuter l'aventure
+      </div>
+    </footer>
+  </div>
+  </body>
+</html>

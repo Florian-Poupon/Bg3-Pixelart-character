@@ -1,0 +1,259 @@
+/*
+  style.css
+  Feuille de style principale pour BG3 16 BITES
+  Définit l'apparence générale, la mise en page, et l'esthétique pixel art de l'application.
+*/
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Tiny5", sans-serif;
+  font-size: clamp(12px, calc(1.1vw + 1.2vh), 280px);
+  text-transform: uppercase;
+  color: aliceblue;
+  max-width: 100%;
+  text-shadow: 0.1rem 0.1rem #000000;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sky {
+  /* Fond animé avec effet de défilement horizontal */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/images/sky.jpg");
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  animation: scroll-sky 120s linear infinite;
+  image-rendering: pixelated;
+  z-index: -9999;
+}
+
+.decor {
+  /* Décor principal en pixel art, centré et couvrant tout l'écran */
+  position: absolute;
+  background: url("/images/decor-astarion.png");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  z-index: -9998;
+}
+
+@keyframes scroll-sky {
+  /* Animation du ciel pour un effet de mouvement */
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.ui {
+  /* Colonne principale, scrollable, occupe toute la hauteur */
+  scale: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+}
+
+.container {
+  /* Grille à 3 colonnes pour organiser la sélection, le contenu et la fiche personnage */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0rem 3rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.col1,
+.col3 {
+  /* Colonnes latérales pour la sélection et la fiche personnage */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Ajout d'une classe commune pour factoriser les styles des boîtes d'UI */
+.uibox-base {
+  background-color: #302b2bf0;
+  border-color: bisque;
+  border: 0.17rem solid black;
+  outline: 0.17rem solid #db9532;
+  outline-offset: -0.3rem;
+  box-shadow: 3px 3px 0 #0000004e;
+}
+
+.uibox {
+  /* Boîtes avec fond semi-transparent, bordures pixel art, ombre portée */
+  display: flex;
+  padding: 1.2rem;
+  text-align: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem;
+}
+
+.uibox2 {
+  display: flex;
+  padding: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.uibox3 {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem 0.2rem 0.2rem 0.2rem;
+  padding: 0.2rem 0.5rem;
+  outline: 0.17rem solid #ffffff;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.uibox3 img,
+.arrow {
+  display: block;
+  image-rendering: pixelated;
+  width: 0.5rem;
+  height: auto;
+}
+
+.uibox4 {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  text-align: left;
+  gap: 0.2rem;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stats-nom {
+  color: #f8d2b5;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.intro:hover .arrowfull {
+  content: url("/images/nav/arrow-left-full-hover.png");
+}
+
+.intro {
+  color: aliceblue;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.intro:hover {
+  color: #ffdd64;
+}
+
+.arrowfull {
+  display: block;
+  image-rendering: pixelated;
+  width: 0.5rem;
+  height: 0.8rem;
+}
+
+/* Correction de la propriété gap dans .navbar */
+.navbar {
+  /* Barre de navigation horizontale ou verticale selon la taille d'écran */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+a:hover {
+  color: #fcc846 !important;
+}
+
+a.active {
+  color: #ffdd64;
+}
+
+.choixpersonnages {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.picto,
+.picto-hover {
+  /* Images pixel art, changent au survol */
+  image-rendering: pixelated;
+  vertical-align: top;
+  width: 2.8rem;
+}
+
+.picto-hover {
+  /* Affiché uniquement au survol */
+  display: none;
+}
+.picto-personnages:hover .picto {
+  /* Cache le portrait normal au survol */
+  display: none;
+}
+.picto-personnages:hover .picto-hover {
+  /* Affiche le portrait hover au survol */
+  display: block;
+}
+
+.footer {
+  /* Pied de page avec pictos joueurs et bouton start */
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.player .picto {
+  /* Portraits des joueurs dans le footer */
+  gap: 0.5rem;
+  width: 2.5rem;
+  height: auto;
+}
+
+.uibox-start-game {
+  /* Bouton pour débuter l'aventure */
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+  background-color: #302b2bf0;
+  outline: 0.17rem solid #818282;
+  outline-offset: -0.3rem;
+  text-align: left;
+  gap: 0.2rem;
+  box-shadow: 3px 3px 0 #0000004e;
+}

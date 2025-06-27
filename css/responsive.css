@@ -1,0 +1,141 @@
+/*
+  media.css
+  Gère l'adaptation de l'interface pour les écrans de petite taille (smartphones, tablettes).
+*/
+
+.intro-mb {
+  display: none;
+  text-align: center;
+}
+
+/* format smartphone---------------------------------------------------- */
+
+@media screen and (max-width: 1250px) {
+  * {
+    font-size: clamp(30px, calc(1vw + 1vh), 280px);
+  }
+  .intro,
+  .uibox3 {
+    display: none;
+  }
+  .intro-mb {
+    display: block;
+  }
+
+  .footer,
+  .container {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    align-content: center;
+  }
+
+  .col1 {
+    margin-top: 0.5rem;
+  }
+  .col1,
+  .col2,
+  .col3 {
+    width: 100%;
+  }
+
+  .container {
+    gap: 0.25rem;
+  }
+  .ui {
+    gap: 0.5rem;
+  }
+
+  .navbar {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .footer {
+    gap: 1rem;
+    flex-direction: column-reverse;
+    margin-bottom: 0.5rem;
+  }
+
+  .uibox4 .skills,
+  .uibox4 {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .uibox-start-game {
+    margin: 0 auto;
+  }
+}
+
+/* format smartphone---------------------------------------------------- */
+
+@media screen and (max-width: 1100px) {
+  * {
+    font-size: clamp(30px, calc(1vw + 1vh), 280px);
+  }
+  .intro,
+  .uibox3,
+  .header,
+  .tooltiptext,
+  .tooltiptext:hover {
+    display: none;
+  }
+  .intro-mb {
+    display: block;
+  }
+
+  .footer,
+  .container,
+  .ui,
+  .navbar,
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 0;
+    width: 95%;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .col1 {
+    margin-top: 0.5rem;
+  }
+  .col1,
+  .col2,
+  .col3 {
+    gap: 0rem;
+    width: 100%;
+  }
+
+  .container {
+    gap: 0.25rem;
+  }
+  .ui {
+    gap: 0.5rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer {
+    gap: 1rem;
+    flex-direction: column-reverse;
+    margin-bottom: 0.5rem;
+  }
+
+  .picto,
+  .picto-hover {
+    width: 3rem;
+    height: auto;
+  }
+
+  .uibox-start-game {
+    margin: 0 auto;
+    display: inline;
+    padding: 0.8rem 2rem;
+  }
+}
