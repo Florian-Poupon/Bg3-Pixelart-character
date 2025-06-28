@@ -9,17 +9,16 @@
   text-decoration: none;
   list-style: none;
   font-family: "Tiny5", sans-serif;
-  font-size: clamp(12px, calc(1.1vw + 1.2vh), 280px);
+  font-size: clamp(12px, calc(1.15vw + 1.15vh), 280px);
   text-transform: uppercase;
   color: aliceblue;
-  max-width: 100%;
   text-shadow: 0.1rem 0.1rem #000000;
 }
 
 body {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
 }
 
 .sky {
@@ -29,10 +28,10 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  background: url("/images/sky.jpg");
+  background: url("../images/sky.jpg");
   background-size: auto 100%;
   background-repeat: repeat-x;
-  animation: scroll-sky 120s linear infinite;
+  animation: scroll-sky 90s linear infinite;
   image-rendering: pixelated;
   z-index: -9999;
 }
@@ -40,7 +39,7 @@ body {
 .decor {
   /* Décor principal en pixel art, centré et couvrant tout l'écran */
   position: absolute;
-  background: url("/images/decor-astarion.png");
+  background: url("../images/decor-astarion.png");
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -67,7 +66,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .container {
@@ -101,7 +100,7 @@ body {
 .uibox {
   /* Boîtes avec fond semi-transparent, bordures pixel art, ombre portée */
   display: flex;
-  padding: 1.2rem;
+  padding: 0.8rem;
   text-align: center;
   justify-content: center;
   gap: 0.5rem;
@@ -110,7 +109,7 @@ body {
 
 .uibox2 {
   display: flex;
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -121,7 +120,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 0.5rem 0.2rem 0.2rem 0.2rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem;
   outline: 0.17rem solid #ffffff;
   justify-content: space-between;
   align-items: center;
@@ -159,7 +158,7 @@ body {
 }
 
 .intro:hover .arrowfull {
-  content: url("/images/nav/arrow-left-full-hover.png");
+  content: url("../images/nav/arrow-left-full-hover.png");
 }
 
 .intro {
@@ -214,7 +213,7 @@ a.active {
   /* Images pixel art, changent au survol */
   image-rendering: pixelated;
   vertical-align: top;
-  width: 2.8rem;
+  width: 3rem;
 }
 
 .picto-hover {
@@ -235,7 +234,7 @@ a.active {
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 .player .picto {

@@ -1,21 +1,21 @@
 /* Curseur normal (par défaut partout) */
 * {
-  cursor: url("/images/curseur/default64.PNG"), default;
+  cursor: url("../images/curseur/default64.png"), default;
 }
 
 /* Curseur lien ou bouton (main pixel art) */
 a,
 button {
-  cursor: url("/images/curseur/link64.PNG"), pointer;
+  cursor: url("../images/curseur/link64.png"), pointer;
 }
 
 /* Curseur pour champs texte (curseur texte pixel art) */
 input[type="text"],
 textarea {
-  cursor: url("/images/curseur/txt64.PNG"), text;
+  cursor: url("../images/curseur/txt.png"), text;
 }
 
 /* Curseur d'aide ou tooltip (point d'interrogation pixel art) */
 .tooltip {
-  cursor: url("/images/curseur/tooltip64-2.PNG"), help;
+  cursor: url("../images/curseur/tooltip64-2.png"), help;
 }
