@@ -9,7 +9,7 @@
   text-decoration: none;
   list-style: none;
   font-family: "Tiny5", sans-serif;
-  font-size: clamp(12px, calc(1.15vw + 1.15vh), 280px);
+  font-size: clamp(12px, 37px, 280px);
   text-transform: uppercase;
   color: aliceblue;
   text-shadow: 0.1rem 0.1rem #000000;
@@ -39,7 +39,7 @@ body {
 .decor {
   /* Décor principal en pixel art, centré et couvrant tout l'écran */
   position: absolute;
-  background: url("../images/decor-astarion.png");
+  background: url("../images/decor.png");
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -49,13 +49,27 @@ body {
   z-index: -9998;
 }
 
+.sprite img {
+  /* Image de fond du personnage */
+  position: absolute;
+  left: 47.9%; /* Positionne le sprite en % du décor ! */
+  top: 49.9%;
+  width: 9.2%; /* Largeur du sprite en % du décor, pour l'échelle */
+  height: auto;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
 @keyframes scroll-sky {
   /* Animation du ciel pour un effet de mouvement */
   0% {
     background-position: 0 0;
   }
-  100% {
+  50% {
     background-position: -100% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
 
@@ -72,8 +86,8 @@ body {
 .container {
   /* Grille à 3 colonnes pour organiser la sélection, le contenu et la fiche personnage */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin: 0rem 3rem;
+  grid-template-columns: 0.8fr 1fr 0.8fr;
+  margin: 0rem 1.6rem;
   align-content: center;
   justify-content: center;
 }
@@ -100,7 +114,7 @@ body {
 .uibox {
   /* Boîtes avec fond semi-transparent, bordures pixel art, ombre portée */
   display: flex;
-  padding: 0.8rem;
+  padding: 1.2rem 1rem;
   text-align: center;
   justify-content: center;
   gap: 0.5rem;
@@ -109,6 +123,7 @@ body {
 
 .uibox2 {
   display: flex;
+  flex-direction: column;
   padding: 0.8rem;
   text-align: center;
   align-items: center;
@@ -119,12 +134,12 @@ body {
 .uibox3 {
   display: flex;
   flex-direction: row;
-  margin: 0.5rem 0.2rem 0.2rem 0.2rem;
+  /* margin: 0.5rem 0.2rem 0.2rem 0.2rem; */
   padding: 0.5rem;
   outline: 0.17rem solid #ffffff;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 90%;
 }
 
 .uibox3 img,
@@ -157,17 +172,11 @@ body {
   width: 100%;
 }
 
-.intro:hover .arrowfull {
-  content: url("../images/nav/arrow-left-full-hover.png");
-}
-
 .intro {
-  color: aliceblue;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-evenly;
-  align-items: center;
+  width: fit-content;
   text-align: center;
+  display: block;
+  cursor: pointer;
 }
 
 .intro:hover {
@@ -181,14 +190,13 @@ body {
   height: 0.8rem;
 }
 
-/* Correction de la propriété gap dans .navbar */
 .navbar {
   /* Barre de navigation horizontale ou verticale selon la taille d'écran */
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
-  gap: 0.5rem;
+  align-items: center;
 }
 
 a:hover {
@@ -208,25 +216,49 @@ a.active {
   gap: 0.3rem;
 }
 
+.picto-personnages {
+  cursor: url("../images/curseur/link64.png"), pointer;
+}
+
 .picto,
 .picto-hover {
-  /* Images pixel art, changent au survol */
+  /* Images pixel art */
   image-rendering: pixelated;
   vertical-align: top;
-  width: 3rem;
+  width: 2.6rem;
+  cursor: url("../images/curseur/link64.png"), pointer;
 }
 
 .picto-hover {
-  /* Affiché uniquement au survol */
+  /* Affiché uniquement au survol ou pour le picto sélectionné */
   display: none;
 }
+
+/* Hover normal des pictos */
 .picto-personnages:hover .picto {
-  /* Cache le portrait normal au survol */
   display: none;
 }
+
 .picto-personnages:hover .picto-hover {
-  /* Affiche le portrait hover au survol */
   display: block;
+}
+
+/* Le picto sélectionné reste en mode hover */
+.picto-personnages.selected .picto {
+  display: none;
+}
+
+.picto-personnages.selected .picto-hover {
+  display: block;
+}
+
+/* Curseur pointer pour les flèches de navigation */
+.uibox3 a {
+  cursor: pointer;
+}
+
+.uibox3 img {
+  cursor: url("../images/curseur/link64.png"), pointer;
 }
 
 .footer {
@@ -255,4 +287,32 @@ a.active {
   text-align: left;
   gap: 0.2rem;
   box-shadow: 3px 3px 0 #0000004e;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.skills span {
+  word-wrap: break-word;
+  word-break: normal;
+  max-width: 7rem;
+  white-space: normal;
+}
+
+/* Pour les spans qui contiennent le nom de l'action */
+.skills .stats-nom.skills {
+  flex: 1;
+  min-width: 0;
+}
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
