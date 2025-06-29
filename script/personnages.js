@@ -317,3 +317,21 @@ function updateTooltipBehavior() {
 
 window.addEventListener("resize", updateTooltipBehavior);
 document.addEventListener("DOMContentLoaded", updateTooltipBehavior);
+
+function disableTooltipsOnMobile() {
+  if (window.matchMedia("(max-width: 1024px)").matches) {
+    document.querySelectorAll(".tooltip .tooltiptext").forEach((el) => {
+      if (el instanceof HTMLElement) {
+        el.style.display = "none";
+      }
+    });
+  } else {
+    document.querySelectorAll(".tooltip .tooltiptext").forEach((el) => {
+      if (el instanceof HTMLElement) {
+        el.style.display = "";
+      }
+    });
+  }
+}
+window.addEventListener("resize", disableTooltipsOnMobile);
+document.addEventListener("DOMContentLoaded", disableTooltipsOnMobile);
