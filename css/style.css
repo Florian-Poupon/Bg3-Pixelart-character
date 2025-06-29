@@ -163,6 +163,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 90%;
+  gap: 0.5rem;
 }
 
 .uibox3 img,
@@ -313,6 +314,10 @@ a.active {
   box-shadow: 3px 3px 0 #0000004e;
 }
 
+.uibox-start-game-mb {
+  display: none;
+}
+
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -339,6 +344,7 @@ a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .music {
