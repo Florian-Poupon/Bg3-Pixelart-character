@@ -88,8 +88,12 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 480px) {
   * {
-    font-size: clamp(28px, calc(1vw + 1vh), 280px);
+    font-size: clamp(24px, calc(1vw + 1vh), 280px);
+  }
+
+  .ui {
+    gap: 0rem;
   }
 }

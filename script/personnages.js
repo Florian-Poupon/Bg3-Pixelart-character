@@ -247,3 +247,73 @@ function getStatTooltip(stat) {
   };
   return tooltips[stat] || "Caractéristique du personnage";
 }
+
+// === Gestion des tooltips en pop-up sur mobile/tablette ===
+function isMobileOrTablet() {
+  return window.matchMedia("(max-width: 1024px)").matches;
+}
+
+function closeAllTooltips() {
+  document.querySelectorAll(".tooltip .tooltiptext").forEach((el) => {
+    if (el instanceof HTMLElement) {
+      el.style.visibility = "hidden";
+      el.style.opacity = "0";
+    }
+  });
+}
+
+function enableTooltipPopups() {
+  document.querySelectorAll(".tooltip").forEach((tooltip) => {
+    if (tooltip instanceof HTMLElement) {
+      tooltip.onclick = null;
+      tooltip.onmouseenter = null;
+      tooltip.onmouseleave = null;
+    }
+    const tooltipText = tooltip.querySelector(".tooltiptext");
+    if (!(tooltipText instanceof HTMLElement)) return;
+    tooltip.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isVisible = tooltipText.style.visibility === "visible";
+      closeAllTooltips();
+      if (!isVisible) {
+        tooltipText.style.visibility = "visible";
+        tooltipText.style.opacity = "1";
+      }
+    });
+  });
+  document.body.addEventListener("click", closeAllTooltips);
+}
+
+function enableTooltipHover() {
+  document.querySelectorAll(".tooltip").forEach((tooltip) => {
+    if (tooltip instanceof HTMLElement) {
+      tooltip.onclick = null;
+      tooltip.onmouseenter = function () {
+        const tooltipText = tooltip.querySelector(".tooltiptext");
+        if (tooltipText instanceof HTMLElement) {
+          tooltipText.style.visibility = "visible";
+          tooltipText.style.opacity = "1";
+        }
+      };
+      tooltip.onmouseleave = function () {
+        const tooltipText = tooltip.querySelector(".tooltiptext");
+        if (tooltipText instanceof HTMLElement) {
+          tooltipText.style.visibility = "hidden";
+          tooltipText.style.opacity = "0";
+        }
+      };
+    }
+  });
+  document.body.removeEventListener("click", closeAllTooltips);
+}
+
+function updateTooltipBehavior() {
+  if (isMobileOrTablet()) {
+    enableTooltipPopups();
+  } else {
+    enableTooltipHover();
+  }
+}
+
+window.addEventListener("resize", updateTooltipBehavior);
+document.addEventListener("DOMContentLoaded", updateTooltipBehavior);
