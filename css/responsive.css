@@ -24,9 +24,6 @@
 }
 
 @media screen and (max-width: 1280px) {
-  /* * {
-    font-size: clamp(30px, calc(1vw + 1vh), 280px);
-  } */
   /* .intro, */
   .intro {
     display: none;
@@ -88,5 +85,11 @@
     text-align: left;
     gap: 0.2rem;
     box-shadow: 3px 3px 0 #0000004e;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  * {
+    font-size: clamp(28px, calc(1vw + 1vh), 280px);
   }
 }
