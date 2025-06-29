@@ -36,6 +36,19 @@ body {
   z-index: -9999;
 }
 
+@keyframes scroll-sky {
+  /* Animation du ciel pour un effet de mouvement */
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
 .decor {
   /* Décor principal en pixel art, centré et couvrant tout l'écran */
   position: absolute;
@@ -57,19 +70,25 @@ body {
   width: 9.2%; /* Largeur du sprite en % du décor, pour l'échelle */
   height: auto;
   image-rendering: pixelated;
+  z-index: 1;
+}
+
+.leaf-container {
+  position: fixed;
   z-index: 2;
 }
 
-@keyframes scroll-sky {
-  /* Animation du ciel pour un effet de mouvement */
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 0 0;
+.leaf {
+  position: absolute;
+  width: 2.3rem;
+  height: 2.5rem;
+  background: url("../images/sprites/fall_leaf.png") 0 0 no-repeat;
+  background-size: 10rem;
+  animation: leaf 1.5s steps(5) infinite, move-leaf 10s linear infinite;
+}
+@keyframes leaf {
+  to {
+    background-position: -10rem 0;
   }
 }
 
@@ -81,6 +100,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  /* display: none; */
 }
 
 .container {
