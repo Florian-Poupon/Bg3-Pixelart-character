@@ -5,43 +5,64 @@ function randomBetween(a, b) {
 const container = document.querySelector(".leaf-container");
 const leafCount = 10;
 
-for (let i = 0; i < leafCount; i++) {
-  const leaf = document.createElement("div");
-  leaf.classList.add("leaf");
-  leaf.style.opacity = "0";
+if (container) {
+  for (let i = 0; i < leafCount; i++) {
+    const leaf = document.createElement("div");
+    leaf.classList.add("leaf");
+    leaf.style.opacity = "0";
 
-  let startX = randomBetween(0, window.innerWidth);
-  let angle = randomBetween(-30, 30); // angle de chute en degrés
-  const duration = randomBetween(4, 10); // durée de la chute en secondes
+    let startX = randomBetween(0, window.innerWidth);
+    let angle = randomBetween(-30, 30); // angle de chute en degrés
+    const duration = randomBetween(4, 10); // durée de la chute en secondes
 
-  leaf.style.left = `${startX}px`;
-  leaf.style.top = `-40px`;
+    leaf.style.left = `${startX}px`;
+    leaf.style.top = `-40px`;
 
-  // Progression aléatoire au démarrage
-  let progress = Math.random();
+    // Progression aléatoire au démarrage
+    let progress = Math.random();
 
-  function animateLeaf() {
-    leaf.style.opacity = "1";
-    progress += 1 / (60 * duration);
-    if (progress > 1) {
-      progress = 0;
-      startX = randomBetween(0, window.innerWidth);
-      angle = randomBetween(-30, 30);
-      leaf.style.left = `${startX}px`;
-      leaf.style.top = `-40px`;
+    function animateLeaf() {
+      leaf.style.opacity = "1";
+      progress += 1 / (60 * duration);
+      if (progress > 1) {
+        progress = 0;
+        startX = randomBetween(0, window.innerWidth);
+        angle = randomBetween(-30, 30);
+        leaf.style.left = `${startX}px`;
+        leaf.style.top = `-40px`;
+      }
+
+      const dist = window.innerHeight + 80;
+      const x = startX + Math.tan((angle * Math.PI) / 180) * progress * dist;
+      const y = progress * dist - 40;
+
+      leaf.style.transform = `translate(${x - startX}px, ${y}px)`;
+
+      requestAnimationFrame(animateLeaf);
     }
 
-    const dist = window.innerHeight + 80;
-    const x = startX + Math.tan((angle * Math.PI) / 180) * progress * dist;
-    const y = progress * dist - 40;
+    // Décalage de lancement pour chaque feuille
+    setTimeout(animateLeaf, randomBetween(0, 3000));
 
-    leaf.style.transform = `translate(${x - startX}px, ${y}px)`;
-
-    requestAnimationFrame(animateLeaf);
+    container.appendChild(leaf);
   }
+}
 
-  // Décalage de lancement pour chaque feuille
-  setTimeout(animateLeaf, randomBetween(0, 3000));
+function toggleMusic() {
+  try {
+    const music = document.querySelector(".music");
+    const audio = document.querySelector("#audio-music");
 
-  container.appendChild(leaf);
+    if (music && audio) {
+      if (eval("music.src").includes("off")) {
+        eval("music.src = 'images/sprites/music_on.png';");
+        eval("audio.play();");
+      } else {
+        eval("music.src = 'images/sprites/music_off.png';");
+        eval("audio.pause();");
+      }
+    }
+  } catch (error) {
+    console.log("Erreur lors du toggle de la musique:", error);
+  }
 }

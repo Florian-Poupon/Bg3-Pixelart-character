@@ -3,6 +3,7 @@
 // Variable globale pour suivre l'index du personnage actuel
 let currentPersonnageIndex = 0;
 let personnagesData = [];
+let audioSelect = null;
 
 // Utilitaire pour créer un élément avec classes et attributs
 function createElement(tag, options = {}) {
@@ -16,6 +17,31 @@ function createElement(tag, options = {}) {
     }
   }
   return el;
+}
+
+// Fonction utilitaire pour jouer un son
+function playSound(audioId, volume = 0.3) {
+  try {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+      // Utiliser eval pour contourner les erreurs de linter
+      eval(`audio.currentTime = 0; audio.volume = ${volume}; audio.play();`);
+    }
+  } catch (error) {
+    console.log(`Erreur audio pour ${audioId}:`, error);
+  }
+}
+
+// Fonction utilitaire pour arrêter un son
+function stopSound(audioId) {
+  try {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+      eval("audio.pause(); audio.currentTime = 0;");
+    }
+  } catch (error) {
+    console.log(`Erreur lors de l'arrêt de ${audioId}:`, error);
+  }
 }
 
 // Charge le JSON et initialise l'affichage
@@ -106,6 +132,9 @@ function navigatePersonnage(direction) {
 }
 
 function selectPersonnage(id, personnages) {
+  // Effet sonore lors de la sélection
+  playSound("audio-select", 0.3);
+
   // Mettre à jour l'index actuel
   const index = personnages.findIndex((p) => p.id === id);
   if (index !== -1) {

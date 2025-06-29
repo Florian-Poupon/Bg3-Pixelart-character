@@ -1,3 +1,6 @@
+:root {
+  --pointer: url("../images/curseur/link64.png"), pointer;
+}
 /*
   style.css
   Feuille de style principale pour BG3 16 BITES
@@ -118,7 +121,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.3rem;
 }
 
 /* Ajout d'une classe commune pour factoriser les styles des boîtes d'UI */
@@ -201,6 +204,7 @@ body {
 
 .intro:hover {
   color: #ffdd64;
+  cursor: var(--pointer);
 }
 
 .arrowfull {
@@ -237,7 +241,7 @@ a.active {
 }
 
 .picto-personnages {
-  cursor: url("../images/curseur/link64.png"), pointer;
+  cursor: var(--pointer);
 }
 
 .picto,
@@ -246,7 +250,7 @@ a.active {
   image-rendering: pixelated;
   vertical-align: top;
   width: 2.6rem;
-  cursor: url("../images/curseur/link64.png"), pointer;
+  cursor: var(--pointer);
 }
 
 .picto-hover {
@@ -278,7 +282,7 @@ a.active {
 }
 
 .uibox3 img {
-  cursor: url("../images/curseur/link64.png"), pointer;
+  cursor: var(--pointer);
 }
 
 .footer {
@@ -335,4 +339,17 @@ a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.music {
+  width: 2.8rem;
+  height: auto;
+  z-index: 10;
+  cursor: var(--pointer);
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
