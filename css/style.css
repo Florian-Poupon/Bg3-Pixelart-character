@@ -103,7 +103,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
-  /* display: none; */
 }
 
 .container {
@@ -359,4 +358,9 @@ a.active {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.picto-mobile,
+.navigation-mobile {
+  display: none;
 }

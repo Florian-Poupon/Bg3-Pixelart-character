@@ -80,7 +80,7 @@ function renderPortraits(personnages) {
     container.appendChild(pictoDiv);
   });
 
-  // Ajouter la navigation après les pictos
+  // Navigation principale (desktop/tablette)
   const navigationDiv = createElement("div", { class: "uibox3 uibox-base" });
   const leftArrow = createElement("span");
   const leftLink = createElement("a", { attrs: { href: "#" } });
@@ -112,6 +112,28 @@ function renderPortraits(personnages) {
   });
 
   container.appendChild(navigationDiv);
+
+  // Navigation mobile
+  const navMobileContainer = document.querySelector(".navigation-mobile");
+  if (navMobileContainer) {
+    navMobileContainer.innerHTML = "";
+    if (window.matchMedia("(max-width: 480px)").matches) {
+      const navMobile = navigationDiv.cloneNode(true);
+      // Rebrancher les événements sur le clone
+      const navLinks = navMobile.querySelectorAll("a");
+      if (navLinks.length === 2) {
+        navLinks[0].addEventListener("click", (e) => {
+          e.preventDefault();
+          navigatePersonnage(-1);
+        });
+        navLinks[1].addEventListener("click", (e) => {
+          e.preventDefault();
+          navigatePersonnage(1);
+        });
+      }
+      navMobileContainer.appendChild(navMobile);
+    }
+  }
 }
 
 // Fonction pour naviguer entre les personnages
@@ -181,8 +203,21 @@ function selectPersonnage(id, personnages) {
   // Bloc stats principales
   const statsBox = createElement("div", { class: "uibox4 uibox-base" });
   const stats1 = createElement("div", { class: "stats" });
-  stats1.appendChild(createElement("div", { class: "stat-row", html: `${perso.race}` }));
-  stats1.appendChild(createElement("div", { class: "stat-row", html: `${perso.class}` }));
+  stats1.classList.add("stats-infos-mobile");
+  const stats1infos = createElement("div", { class: "stats-infos" });
+
+  // Ajout du portrait du personnage sélectionné en mobile
+  if (window.matchMedia("(max-width: 480px)").matches) {
+    const pictoMobile = createElement("img", {
+      class: "picto picto-mobile",
+      attrs: { src: `images/portraits/picto-${perso.id}.png`, alt: perso.name, title: perso.name },
+    });
+    stats1.appendChild(pictoMobile);
+  }
+
+  stats1infos.appendChild(createElement("div", { class: "stat-row", html: `${perso.race}` }));
+  stats1infos.appendChild(createElement("div", { class: "stat-row", html: `${perso.class}` }));
+  stats1.appendChild(stats1infos);
   statsBox.appendChild(stats1);
 
   // Bloc stats numériques

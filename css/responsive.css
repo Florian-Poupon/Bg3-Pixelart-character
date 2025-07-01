@@ -93,7 +93,50 @@
     font-size: clamp(24px, calc(1vw + 1vh), 280px);
   }
 
+  .choixpersonnages .uibox3,
+  .uibox2.uibox-base,
+  .choixpersonnages .picto-personnages {
+    display: none !important;
+  }
+
   .ui {
     gap: 0rem;
+    align-items: center;
   }
+  .container {
+    flex-direction: column-reverse;
+    width: 90%;
+    gap: 0.3rem;
+  }
+}
+/* .choixpersonnages .uibox-base {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    left: 5px;
+    z-index: 100;
+    margin: 0;
+    width: 90vw;
+  } */
+.navigation-mobile {
+  display: block !important;
+  margin: 0 0.5rem;
+  width: 90%;
+}
+
+.picto-mobile {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.picto-mobile img {
+  aspect-ratio: 1/1 !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.stats-infos-mobile {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.3rem;
 }
